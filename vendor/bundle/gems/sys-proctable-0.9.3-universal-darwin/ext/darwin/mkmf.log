@@ -1,0 +1,24 @@
+have_type: checking for rb_pid_t in ruby.h... -------------------- yes
+
+"gcc -o conftest -I/Users/jj/.rvm/rubies/ruby-1.9.3-p392/include/ruby-1.9.1/x86_64-darwin12.4.0 -I/Users/jj/.rvm/rubies/ruby-1.9.3-p392/include/ruby-1.9.1/ruby/backward -I/Users/jj/.rvm/rubies/ruby-1.9.3-p392/include/ruby-1.9.1 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -I/opt/local/include  -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fno-common -pipe conftest.c  -L. -L/Users/jj/.rvm/rubies/ruby-1.9.3-p392/lib -L/opt/local/lib -L.  -L/opt/local/lib      -lruby.1.9.1  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"gcc -I/Users/jj/.rvm/rubies/ruby-1.9.3-p392/include/ruby-1.9.1/x86_64-darwin12.4.0 -I/Users/jj/.rvm/rubies/ruby-1.9.3-p392/include/ruby-1.9.1/ruby/backward -I/Users/jj/.rvm/rubies/ruby-1.9.3-p392/include/ruby-1.9.1 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -I/opt/local/include  -O3 -ggdb -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -fno-common -pipe   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby.h>
+4: 
+5: /*top*/
+6: typedef rb_pid_t conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
