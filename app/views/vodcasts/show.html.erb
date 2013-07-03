@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Link:</b>
+  <%= @vodcast.link %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @vodcast.desc %>
+</p>
+
+
+<%= link_to 'Edit', edit_vodcast_path(@vodcast) %> |
+<%= link_to 'Back', vodcasts_path %>
