@@ -2,11 +2,11 @@ DotNetCasts::Application.routes.draw do
   resources :vodcasts
 
 
-  root :to => 'static_pages#home'
+  root :to => 'vodcasts#index'
 
-  get "static_pages/home"
+  match "/about", to: "static_pages#about"
 
-  get "static_pages/help"
+  match "/contact", to: "static_pages#contact"
 
   
 

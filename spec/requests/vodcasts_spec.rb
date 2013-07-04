@@ -1,11 +1,23 @@
 require 'spec_helper'
 
 describe "Vodcasts" do
-  describe "GET /vodcasts" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get vodcasts_path
-      response.status.should be(200)
+
+	subject { page }
+  
+  describe "index" do
+
+  	let(:vodcast) { FactoryGirl.create(:vodcast) }
+
+  	before(:all) { 30.times { FactoryGirl.create(:vodcast) } }
+		after(:all)  { Vodcast.delete_all }
+
+		before { visit root_path }
+
+    describe "vodcasts list" do      
+      it { should have_selector('h3', text: 'Vodcast #1') }
+      it { should have_selector('p',  text: 'Lorem ipsum') }
+      it { should have_selector('iframe',  width: '640') }
+      it { should have_selector('iframe',  height: '360') }
     end
   end
 end

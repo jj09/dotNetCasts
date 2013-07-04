@@ -1,7 +1,8 @@
 <ul class="unstyled">
 <% @vodcasts.each do |vodcast| %>
   <li>
-    <span><%= vodcast.created_at %></span>
+    <h3><%= vodcast.title %></h3>
+    <span style="color: #ccc"><%= vodcast.created_at %></span>
     <p><%= vodcast.desc %></p>
     <div class="text-center">
       <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>

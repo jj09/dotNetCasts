@@ -15,16 +15,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">dotNetCasts</a>
+          <%= link_to "dotNetCasts", root_path, {class: :brand} %>
           <div class="nav-collapse collapse">
             <form class="navbar-form pull-left">
               <input class="span3" type="text" placeholder="Search casts...">
               <button type="submit" class="btn">Search</button>
             </form>
             <ul class="nav pull-right">
-              <li><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><%= link_to "dotNetCasts", root_path %></li>
+              <li><%= link_to "About", about_path %></a></li>
+              <li><%= link_to "Contact", contact_path %></li>
             </ul>
             
           </div><!--/.nav-collapse -->
@@ -34,6 +34,7 @@
   </div>
   <div class="container">
   	<%= yield %>
+  	<%= debug(params) if Rails.env.development? %>
   </div>
 
 
