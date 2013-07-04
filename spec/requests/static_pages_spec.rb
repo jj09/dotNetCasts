@@ -10,6 +10,9 @@ describe "StaticPages" do
 		page.should have_selector 'h1', text: 'About'
 		click_link "Contact"
 		page.should have_selector 'h1', text: 'Contact'
+		click_link "Home"
+		page.should_not have_selector 'h1', text: 'Contact'
+		page.should_not have_selector 'h1', text: 'About'
 		click_link "dotNetCasts"
 		page.should_not have_selector 'h1', text: 'Contact'
 		page.should_not have_selector 'h1', text: 'About'
