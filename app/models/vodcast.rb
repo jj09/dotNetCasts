@@ -1,7 +1,9 @@
 class Vodcast < ActiveRecord::Base
-  attr_accessible :title, :desc, :link
+  attr_accessible :title, :desc, :link, :tags, :tag_ids
 
   before_save :convert_link
+
+  has_and_belongs_to_many :tags
 
   private
   	def convert_link

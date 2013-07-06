@@ -7,6 +7,10 @@
     <div class="text-center">
       <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>
     </div>
+    <div>
+      Tags: <%= vodcast.tags.collect { |tag| tag.name }.join(", ") %>
+
+    </div>
     <span><%= link_to 'Show', vodcast %> | 
       <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |
       <%= link_to 'Destroy', vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>

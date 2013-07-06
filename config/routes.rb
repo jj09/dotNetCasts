@@ -3,6 +3,8 @@ DotNetCasts::Application.routes.draw do
 
   resources :vodcasts
 
+  resources :tags
+
   resources :sessions, only: [:new, :create, :destroy]
 
 
