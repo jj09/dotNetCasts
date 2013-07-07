@@ -10,7 +10,7 @@ class Vodcast < ActiveRecord::Base
   		match_create = /.*youtube.com\/watch\?[feature=player_detailpage&]*v=(.*)/.match(self.link)
       match_update = /.*youtube.com\/embed\/(.+)?feature=player_detailpage/.match(self.link)
   		if match_create != nil
-  			self.link = "http://www.youtube.com/embed/#{match[1]}?feature=player_detailpage"
+  			self.link = "http://www.youtube.com/embed/#{match_create[1]}?feature=player_detailpage"
       elsif match_update != nil
         # do not do anything with embed link
       else
