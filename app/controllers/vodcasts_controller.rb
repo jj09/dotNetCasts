@@ -44,7 +44,8 @@ class VodcastsController < ApplicationController
 
     respond_to do |format|
       if @vodcast.save
-        format.html { redirect_to @vodcast, notice: 'Vodcast was successfully created.' }
+        flash[:success] = "Vodcast was successfully created."
+        format.html { redirect_to @vodcast }
         format.json { render json: @vodcast, status: :created, location: @vodcast }
       else
         format.html { render action: "new" }
@@ -57,10 +58,12 @@ class VodcastsController < ApplicationController
   # PUT /vodcasts/1.json
   def update
     @vodcast = Vodcast.find(params[:id])
+    @vodcast.tags.clear
 
     respond_to do |format|
       if @vodcast.update_attributes(params[:vodcast])
-        format.html { redirect_to @vodcast, notice: 'Vodcast was successfully updated.' }
+        flash[:success] = "Vodcast was successfully updated."
+        format.html { redirect_to @vodcast }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

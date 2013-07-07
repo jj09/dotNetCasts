@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :name, presence: true, length: {maximum: 50}, uniqueness: true
-  validates :password, presence: true  
-  validates :password_confirmation, presence: true
+  validates :password, presence: true, on: :create
+  validates :password_confirmation, presence: true, on: :create
 
   before_create :create_token
 

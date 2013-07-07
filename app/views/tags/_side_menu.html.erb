@@ -1,0 +1,8 @@
+<h3>Tags</h3>
+<ul class="unstyled">
+<% side_menu.each do |tag| %>
+	<li>
+		<%= link_to tag.name, tag %>
+	</li>
+<% end %>
+</ul>

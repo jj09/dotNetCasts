@@ -1,0 +1,9 @@
+Tags: 
+<% tags.each do |tag| %>
+	<%= link_to tag.name, tag %>
+	<% unless tag == tags.last %>
+  	&bull;
+  <% end %>
+<% end %>
+
+<%#tags.collect { |tag| link_to tag.name, tag }.join(", ") %>

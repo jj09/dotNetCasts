@@ -40,13 +40,18 @@
     </div>
   </div>
   <div class="container">
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
+    <div class="span9">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
 
-  	<%= yield %>
+    	<%= yield %>
 
-  	<%= debug(params) if Rails.env.development? %>    
+    	<%= debug(params) if Rails.env.development? %>    
+    </div>
+    <div class="span2" style="border: 1px solid #ccc; padding: 0 10px 0 10px">
+      <%= render partial: 'tags/side_menu', object: Tag.all %>
+    </div>
   </div>
 
 

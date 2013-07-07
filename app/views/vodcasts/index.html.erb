@@ -8,8 +8,7 @@
       <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>
     </div>
     <div>
-      Tags: <%= vodcast.tags.collect { |tag| tag.name }.join(", ") %>
-
+      <%= render partial: "tags", object: vodcast.tags %>
     </div>
     <span><%= link_to 'Show', vodcast %> | 
       <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |

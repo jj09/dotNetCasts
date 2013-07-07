@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h2>
   <b>Title:</b>
   <%= @vodcast.title %>
@@ -15,8 +13,7 @@
 </p>
 
 <p>
-	<b>Tags:</b>
-	<%= @vodcast.tags.collect { |tag| tag.name }.join(", ") %>
+	<%= render partial: "tags", object: @vodcast.tags %>
 </p>
 
 
