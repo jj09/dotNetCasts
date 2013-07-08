@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h2><%= @tag.name %></h2>
 
-<%= @tag.name %>
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<% if admin? %>
+	<p>
+		<%= link_to 'Edit', edit_tag_path(@tag) %>
+	</p>
+<% end %>
 
-<ul>
+<ul class="unstyled">
 <% @tag.vodcasts.each do |vodcast| %>
 	<li><%= link_to vodcast.title, vodcast %></li>
 <% end %>

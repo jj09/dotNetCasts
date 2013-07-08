@@ -11,12 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706025324) do
+ActiveRecord::Schema.define(:version => 20130708025755) do
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "vodcast_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["user_id", "created_at"], :name => "index_comments_on_user_id_and_created_at"
 
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags_vodcasts", :id => false, :force => true do |t|
+    t.integer "vodcast_id"
+    t.integer "tag_id"
   end
 
   create_table "users", :force => true do |t|
@@ -26,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130706025324) do
     t.datetime "updated_at",                         :null => false
     t.boolean  "admin",           :default => false
     t.string   "token"
+    t.string   "email"
   end
 
   create_table "vodcasts", :force => true do |t|
@@ -34,11 +50,6 @@ ActiveRecord::Schema.define(:version => 20130706025324) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "title"
-  end
-
-  create_table "vodcasts_tags", :id => false, :force => true do |t|
-    t.integer "vodcast_id"
-    t.integer "tag_id"
   end
 
 end

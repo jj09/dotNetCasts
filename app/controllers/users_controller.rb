@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :admin_user, only: [:index, :new, :create, :destroy]
-  before_filter :correct_user, only: [:show, :edit, :update]
+  before_filter :signed_in_admin, only: [:index, :new, :create, :destroy]
+  before_filter :correct_user, only: [:edit, :update]
 
   # GET /users
   # GET /users.json
@@ -92,10 +92,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def admin_user
-      redirect_to root_path unless current_user && current_user.admin?
-    end
 
     def correct_user      
       @user = User.find(params[:id])

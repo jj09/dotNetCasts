@@ -1,23 +1,21 @@
-<h1>Listing tags</h1>
+<h1>Tags</h1>
 
-<table>
-  <tr>
-    <th>name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if admin? %>
+  <p>
+    <%= link_to 'New Tag', new_tag_path %>
+  </p>
+<% end %>
+
+<table class="table">
 
 <% @tags.each do |tag| %>
   <tr>
-    <td><%= tag.name %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to tag.name, tag %></td>
+    <% if admin? %>
+      <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+      <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
+
 </table>
-
-<br />
-
-<%= link_to 'New Tag', new_tag_path %>

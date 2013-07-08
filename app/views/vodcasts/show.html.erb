@@ -1,14 +1,20 @@
 <h2>
-  <b>Title:</b>
   <%= @vodcast.title %>
 </h2>
 
-<div class="text-center">
+<% if admin? %>
+	<%= link_to 'Edit', edit_vodcast_path(@vodcast) %> |
+	<%= link_to 'Destroy', @vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<br />
+<% end %>
+
+<small><%= @vodcast.created_at %></small>
+
+<div class="text-center" style="margin: 10px">
   <iframe width="640" height="360" src="<%= @vodcast.link %>" frameborder="0" allowfullscreen></iframe>
 </div>
 
 <p>
-  <b>Desc:</b>
   <%= @vodcast.desc %>
 </p>
 
@@ -16,6 +22,8 @@
 	<%= render partial: "tags", object: @vodcast.tags %>
 </p>
 
+<%= render 'comments/comments' %>
 
-<%= link_to 'Edit', edit_vodcast_path(@vodcast) %> |
-<%= link_to 'Back', vodcasts_path %>
+<% if signed_in? %>
+	<%= render 'shared/comment_form' %>
+<% end %>

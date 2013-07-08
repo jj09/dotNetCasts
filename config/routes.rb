@@ -1,4 +1,7 @@
 DotNetCasts::Application.routes.draw do
+  resources :comments
+
+
   resources :users
 
   resources :vodcasts
@@ -14,7 +17,7 @@ DotNetCasts::Application.routes.draw do
 
   match "/contact", to: "static_pages#contact"
 
-  match '/admin',  to: 'sessions#new'
+  match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
   

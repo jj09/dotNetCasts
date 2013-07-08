@@ -1,23 +1,33 @@
-<ul class="unstyled">
-<% @vodcasts.each do |vodcast| %>
-  <li>
-    <h3><%= vodcast.title %></h3>
-    <span style="color: #ccc"><%= vodcast.created_at %></span>
-    <p><%= vodcast.desc %></p>
-    <div class="text-center">
-      <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div>
-      <%= render partial: "tags", object: vodcast.tags %>
-    </div>
-    <span><%= link_to 'Show', vodcast %> | 
-      <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |
-      <%= link_to 'Destroy', vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </span>
-  </li>
+<% if admin? %>
+  <%= link_to 'New Vodcast', new_vodcast_path %>
 <% end %>
-</ul>
 
-<br />
+<div class="row">
+  <div class="span9">
+    <ul class="unstyled">
+    <% @vodcasts.each do |vodcast| %>
+      <li>
+        <h3><%= link_to vodcast.title, vodcast %></h3>
+        <span style="color: #ccc"><%= vodcast.created_at %></span>
+        <div class="text-center" style="margin: 10px">
+          <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p><%= vodcast.desc %></p>
+        <div>
+          <%= link_to 'Comments ['+vodcast.comments.count.to_s + ']', vodcast %> | <%= render partial: "tags", object: vodcast.tags %>
+        </div>
+        <% if admin? %>
+        <span>
+          <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |
+          <%= link_to 'Destroy', vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </span>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
 
-<%= link_to 'New Vodcast', new_vodcast_path %>
+  </div>
+  <div class="span2" style="border: 1px solid #ccc; padding: 0 10px 0 10px">
+    <%= render partial: 'tags/side_menu', object: Tag.all %>
+  </div>
+</div>

@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= image_tag "header.png", style: "width: 100%; height:100px" %>
 	<div class="navbar navbar-inverse navbar-top">
       <div class="navbar-inner">
         <div class="container">
@@ -27,10 +28,18 @@
               <li><%= link_to "Contact", contact_path %></li>
               <% if signed_in? %>
                 <% if current_user.admin? %>
-                  <li><%= link_to "Users", users_path %></li>
-                  <li><%= link_to "Tags", tags_path %></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Users", users_path %></li>
+                      <li><%= link_to "Tags", tags_path %></li>
+                      <li><%= link_to "Comments", comments_path %></li>    
+                    </ul>
+                  </li>                  
                 <% end %>              
-                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>              
+              <% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
               <% end %>
             </ul>
             
@@ -40,18 +49,15 @@
     </div>
   </div>
   <div class="container">
-    <div class="span9">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
 
-    	<%= yield %>
+  	<%= yield %>
 
-    	<%= debug(params) if Rails.env.development? %>    
-    </div>
-    <div class="span2" style="border: 1px solid #ccc; padding: 0 10px 0 10px">
-      <%= render partial: 'tags/side_menu', object: Tag.all %>
-    </div>
+    <%= debug(params) if Rails.env.development? %>
+    <%= debug(session) if Rails.env.development? %>
+    <%= debug(response) if Rails.env.development? %>    
   </div>
 
 

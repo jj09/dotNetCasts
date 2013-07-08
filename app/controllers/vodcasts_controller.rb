@@ -1,4 +1,6 @@
 class VodcastsController < ApplicationController
+  before_filter :signed_in_admin, only: [:new, :create, :edit, :update, :destroy]
+
   # GET /vodcasts
   # GET /vodcasts.json
   def index
@@ -14,6 +16,7 @@ class VodcastsController < ApplicationController
   # GET /vodcasts/1.json
   def show
     @vodcast = Vodcast.find(params[:id])
+    @comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -62,7 +65,11 @@ class VodcastsController < ApplicationController
 
     respond_to do |format|
       if @vodcast.update_attributes(params[:vodcast])
-        flash[:success] = "Vodcast was successfully updated."
+        if admin?
+          flash[:success] = 'ADMIN!'
+        else
+          flash[:success] = "Vodcast was successfully updated."
+        end
         format.html { redirect_to @vodcast }
         format.json { head :no_content }
       else

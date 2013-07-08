@@ -1,9 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
+
+<div>
+  <%= gravatar_for @user, size: 52 %>
   <%= @user.name %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if admin? || current_user?(current_user) %>
+	<p>
+		<%= link_to 'Edit', edit_user_path(@user) %>
+	</p>
+<% end %>
+
+<% if @user.comments.any? %>	
+	<h3>Comments:</h3>
+
+	<ul class="unstyled">
+	<% @user.comments.each do |comment| %>
+		<li>
+			<p>
+				<%= link_to truncate(comment.content, length: 30), comment.vodcast %>
+			</p>
+			<small><%= comment.created_at %></small>
+			<hr />
+		</li>
+		
+	<% end %>
+	</ul>
+
+<% end %>
