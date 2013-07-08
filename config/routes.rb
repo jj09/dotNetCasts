@@ -20,6 +20,8 @@ DotNetCasts::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
+  match '/send_email', to: "static_pages#send_email"
+
   
 
   # The priority is based upon order of creation:
