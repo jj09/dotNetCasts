@@ -21,6 +21,8 @@ DotNetCasts::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/signup',  to: 'users#new'
 
+  match '/profile', to: 'users#edit'
+
   match '/send_email', to: "static_pages#send_email"
 
   match '/feed' => 'vodcasts#feed',
