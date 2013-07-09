@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe User do
    before do
-   	@user = User.new(name: "user", password: "master", password_confirmation: "master")
+   	@user = User.new(name: "user", email: "user@example.com", password: "master", password_confirmation: "master")
    end
 
    subject { @user }
 
    it { should respond_to(:name) }
+   it { should respond_to(:email) }
    it { should respond_to(:password) }
    it { should respond_to(:password_confirmation) }
    it { should respond_to(:password_digest) }
