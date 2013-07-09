@@ -9,9 +9,9 @@ class Vodcast < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, conditions: ['lower(title) LIKE lower(?)', "%#{search}%"])
+      find(:all, conditions: ['lower(title) LIKE lower(?)', "%#{search}%"],).order("updated_at desc")
     else
-      find(:all)
+      find(:all).order("updated_at desc")
     end
   end
 

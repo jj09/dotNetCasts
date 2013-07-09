@@ -8,7 +8,7 @@
     <% @vodcasts.each do |vodcast| %>
       <li>
         <h3><%= link_to vodcast.title, vodcast %></h3>
-        <span style="color: #ccc"><%= vodcast.created_at %></span>
+        <span style="color: #ccc"><%= vodcast.created_at.strftime("%Y-%m-%dT%H:%M:%SZ") %></span>
         <div class="text-center" style="margin: 10px">
           <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>
         </div>
