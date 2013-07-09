@@ -8,7 +8,7 @@
 	<br />
 <% end %>
 
-<small><%= @vodcast.created_at.strftime("%Y-%m-%dT%H:%M:%SZ") %></small>
+<small><%= @vodcast.created_at.strftime("%Y-%m-%d %H:%M:%S") %></small>
 
 <div class="text-center" style="margin: 10px">
   <iframe width="640" height="360" src="<%= @vodcast.link %>" frameborder="0" allowfullscreen></iframe>
