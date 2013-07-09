@@ -40,13 +40,13 @@ DotNetCasts::Application.configure do
   config.action_mailer.perform_deliveries = true
 
   # these options are only needed if you choose smtp delivery
-  config.action_mailer.smtp_settings = {    
+  config.action_mailer.smtp_settings = {
     :address        => 'smtp.gmail.com',
     :port           => 587,
     :domain         => 'gmail.com',
-    :authentication => :plain,
-    :user_name      => '<email>',
-    :password       => '<pass>',
+    :authentication => :login,
+    :user_name      => 'example@gmail.com',
+    :password       => 'secret',
     :enable_starttls_auto => true
   }
 end
