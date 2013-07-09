@@ -98,4 +98,22 @@ class VodcastsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def feed
+  # this will be the name of the feed displayed on the feed reader
+  @title = "dotNetCasts"
+
+  # the news items
+  @vodcasts = Vodcast.order("updated_at desc")
+
+  # this will be our Feed's update timestamp
+  @updated = @vodcasts.first.updated_at unless @vodcasts.empty?
+
+  respond_to do |format|
+    format.atom { render :layout => false }
+
+    # we want the RSS feed to redirect permanently to the ATOM feed
+    format.rss { redirect_to feed_path(:format => :atom), :status => :moved_permanently }
+  end
+end
 end

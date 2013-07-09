@@ -19,10 +19,14 @@ DotNetCasts::Application.routes.draw do
 
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: 'delete'
+  match '/signup',  to: 'users#new'
 
   match '/send_email', to: "static_pages#send_email"
 
-  
+  match '/feed' => 'vodcasts#feed',
+      :as => :feed,
+      :defaults => { :format => 'atom' }
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

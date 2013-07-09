@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_admin, only: [:index, :new, :create, :destroy]
+  before_filter :signed_in_admin, only: [:index, :destroy]
   before_filter :correct_user, only: [:edit, :update]
 
   # GET /users
