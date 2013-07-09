@@ -18,10 +18,10 @@
           </button>
           <%= link_to "dotNetCasts", root_path, {class: :brand} %>
           <div class="nav-collapse collapse">
-            <form class="navbar-form pull-left">
-              <input class="span3" type="text" placeholder="Search casts...">
-              <button type="submit" class="btn">Search</button>
-            </form>
+            <%= form_tag vodcasts_path, method: :get, class: 'navbar-form pull-left' do %>
+              <%= text_field_tag :search, params[:search], class: 'span3' %>
+              <%= submit_tag "Search", name: nil, class: 'btn' %>
+            <% end %>
             <ul class="nav pull-right">
               <li><%= link_to "Home", root_path %></li>
               <li><%= link_to "About", about_path %></a></li>

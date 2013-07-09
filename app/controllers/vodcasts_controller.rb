@@ -4,7 +4,15 @@ class VodcastsController < ApplicationController
   # GET /vodcasts
   # GET /vodcasts.json
   def index
-    @vodcasts = Vodcast.all
+    @vodcasts = Vodcast.search(params[:search])
+    
+    if @vodcasts.count == 0
+      if params[:search]
+        flash.now[:notice] = "No results"
+      else
+        flash.now[:notice] = "No vodcasts"
+      end
+    end
 
     respond_to do |format|
       format.html # index.html.erb

@@ -7,6 +7,14 @@ class Vodcast < ActiveRecord::Base
 
   has_many :comments
 
+  def self.search(search)
+    if search
+      find(:all, conditions: ['lower(title) LIKE lower(?)', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
   private
   	def convert_link
   		match_create = /.*youtube.com\/watch\?[feature=player_detailpage&]*v=(.*)/.match(self.link)
