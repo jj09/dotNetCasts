@@ -1,5 +1,7 @@
 <% if admin? %>
-  <%= link_to 'New Vodcast', new_vodcast_path %>
+  <p>
+    <%= link_to 'New Vodcast', new_vodcast_path %>
+  </p>
 <% end %>
 
 <div class="row">
@@ -13,21 +15,23 @@
           <iframe width="640" height="360" src="<%= vodcast.link %>" frameborder="0" allowfullscreen></iframe>
         </div>
         <p><%= vodcast.desc %></p>
-        <div>
+        <p>
           <%= link_to 'Comments ['+vodcast.comments.count.to_s + ']', vodcast %> | <%= render partial: "tags", object: vodcast.tags %>
-        </div>
+        </p>
         <% if admin? %>
-        <span>
+        <p>
           <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |
           <%= link_to 'Destroy', vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </span>
+        </p>
         <% end %>
       </li>
     <% end %>
     </ul>
 
   </div>
-  <div class="span2" style="border: 1px solid #ccc; padding: 0 10px 0 10px">
-    <%= render partial: 'tags/side_menu', object: Tag.all %>
+  <div class="span3">
+    <div style="border: 1px solid #ccc; padding: 0 10px 0 10px">
+      <%= render partial: 'tags/side_menu', object: Tag.all %>
+    </div>
   </div>
 </div>

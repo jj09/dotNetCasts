@@ -21,7 +21,7 @@
           <%= link_to "dotNetCasts", root_path, {class: :brand} %>
           <div class="nav-collapse collapse">
             <%= form_tag vodcasts_path, method: :get, class: 'navbar-form pull-left' do %>
-              <%= text_field_tag :search, params[:search], class: 'span3' %>
+              <%= text_field_tag :search, params[:search], class: 'span2' %>
               <%= submit_tag "Search", name: nil, class: 'btn' %>
             <% end %>
             <ul class="nav pull-right">

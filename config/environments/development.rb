@@ -49,4 +49,8 @@ DotNetCasts::Application.configure do
     :password       => 'secret',
     :enable_starttls_auto => true
   }
+
+  # logger
+  config.logger = Logger.new(config.paths.log.first, 'daily')
+  
 end

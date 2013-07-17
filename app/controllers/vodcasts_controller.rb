@@ -1,6 +1,8 @@
 class VodcastsController < ApplicationController
   before_filter :signed_in_admin, only: [:new, :create, :edit, :update, :destroy]
 
+  caches_page :index
+
   # GET /vodcasts
   # GET /vodcasts.json
   def index
@@ -25,6 +27,7 @@ class VodcastsController < ApplicationController
   def show
     @vodcast = Vodcast.find(params[:id])
     @comment = Comment.new
+    logger.info "Show page requested"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -56,6 +59,7 @@ class VodcastsController < ApplicationController
     respond_to do |format|
       if @vodcast.save
         flash[:success] = "Vodcast was successfully created."
+        expire_page action: "index"
         format.html { redirect_to @vodcast }
         format.json { render json: @vodcast, status: :created, location: @vodcast }
       else
@@ -73,11 +77,8 @@ class VodcastsController < ApplicationController
 
     respond_to do |format|
       if @vodcast.update_attributes(params[:vodcast])
-        if admin?
-          flash[:success] = 'ADMIN!'
-        else
-          flash[:success] = "Vodcast was successfully updated."
-        end
+        flash[:success] = "Vodcast was successfully updated."
+        expire_page action: "index"
         format.html { redirect_to @vodcast }
         format.json { head :no_content }
       else
@@ -92,6 +93,8 @@ class VodcastsController < ApplicationController
   def destroy
     @vodcast = Vodcast.find(params[:id])
     @vodcast.destroy
+
+    expire_page action: "index"
 
     respond_to do |format|
       format.html { redirect_to vodcasts_url }
