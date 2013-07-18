@@ -20,4 +20,23 @@ describe "Vodcasts" do
       it { should have_selector('iframe',  height: '360') }
     end
   end
+
+  describe "new" do
+    before { visit new_vodcast_path }
+
+    describe "create button label" do
+      it { should have_selector('input', value: 'Create vodcast') }
+    end
+  end
+
+  describe "edit" do
+    let(:vodcast) { FactoryGirl.create(:vodcast) }
+    before { visit edit_vodcast_path(vodcast) }
+
+    describe "update button label" do
+      it { should have_selector('input', value: 'Update vodcast') }
+    end
+  end
+
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708025755) do
+ActiveRecord::Schema.define(:version => 20130718030033) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -37,11 +37,15 @@ ActiveRecord::Schema.define(:version => 20130708025755) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.boolean  "admin",           :default => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "admin",            :default => false
     t.string   "token"
     t.string   "email"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   create_table "vodcasts", :force => true do |t|

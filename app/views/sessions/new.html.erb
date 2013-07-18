@@ -16,6 +16,12 @@
 
 	<% end %>
 
-	New user? <%= link_to "Sign up now!", signup_path %>
+		<p>
+			New user? <%= link_to "Sign up now!", signup_path %>
+		</p>
+
+		<p>
+			<%= link_to image_tag("facebook-login-button.png", alt: "Sign in with facebook"), "/auth/facebook", id: "sign_in" %>
+		</p>
 	</div>
 </div>

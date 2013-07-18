@@ -29,6 +29,11 @@ DotNetCasts::Application.routes.draw do
       :as => :feed,
       :defaults => { :format => 'atom' }
 
+  # facebook auth
+  match 'auth/:provider/callback', to: 'sessions#sign_with_fb'
+  match 'auth/failure', to: redirect('/')
+  #match 'fbout', to: 'facebook_sessions#destroy', as: 'fbout'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

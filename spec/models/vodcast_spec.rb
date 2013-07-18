@@ -20,4 +20,12 @@ describe Vodcast do
   	end
   	its(:link) { should == "http://www.youtube.com/embed/yVzNrz1jJHU?feature=player_detailpage" }  	
   end
+
+  describe "accessible attributes" do
+    it "should not allow access to vodcast_id" do
+      expect do
+        Vodcast.new(vodcast_id: "1")
+      end.to raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
 end
