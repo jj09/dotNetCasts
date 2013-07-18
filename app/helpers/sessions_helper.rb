@@ -6,7 +6,7 @@ module SessionsHelper
 	end
 
 	def sign_out		
-		self.current_user = nil		
+		self.current_user = nil
 		cookies.delete(:token)
 	end
 
@@ -27,13 +27,13 @@ module SessionsHelper
 	end	
 
 	def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_path, notice: "Please sign in."
-    end
-  end
+	  unless signed_in?
+	    store_location
+	    redirect_to signin_path, notice: "Please sign in."
+	  end
+	end
 
-  def store_location
+  	def store_location
 		session[:return_to] = request.fullpath
 	end
 
