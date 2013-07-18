@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
 
+  # facebook login: http://railscasts.com/episodes/360-facebook-authentication?view=asciicast
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
       user.provider = auth.provider
