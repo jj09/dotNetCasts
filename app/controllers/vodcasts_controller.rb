@@ -1,8 +1,6 @@
 class VodcastsController < ApplicationController
   before_filter :signed_in_admin, only: [:new, :create, :edit, :update, :destroy]
 
-  caches_action :index
-
   # GET /vodcasts
   # GET /vodcasts.json
   def index
@@ -59,7 +57,6 @@ class VodcastsController < ApplicationController
     respond_to do |format|
       if @vodcast.save
         flash[:success] = "Vodcast was successfully created."
-        expire_action action: "index"
         format.html { redirect_to @vodcast }
         format.json { render json: @vodcast, status: :created, location: @vodcast }
       else
@@ -78,7 +75,6 @@ class VodcastsController < ApplicationController
     respond_to do |format|
       if @vodcast.update_attributes(params[:vodcast])
         flash[:success] = "Vodcast was successfully updated."
-        expire_action action: "index"
         format.html { redirect_to @vodcast }
         format.json { head :no_content }
       else
@@ -93,8 +89,6 @@ class VodcastsController < ApplicationController
   def destroy
     @vodcast = Vodcast.find(params[:id])
     @vodcast.destroy
-
-    expire_action action: "index"
 
     respond_to do |format|
       format.html { redirect_to vodcasts_url }

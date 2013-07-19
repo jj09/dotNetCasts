@@ -8,6 +8,7 @@
   <div class="span9">
     <ul class="unstyled">
     <% @vodcasts.each do |vodcast| %>
+      <% cache(vodcast) do %>
       <li>
         <h3><%= link_to vodcast.title, vodcast %></h3>
         <span style="color: #ccc"><%= vodcast.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
@@ -19,12 +20,13 @@
           <%= link_to 'Comments ['+vodcast.comments.count.to_s + ']', vodcast %> | <%= render partial: "tags", object: vodcast.tags %>
         </p>
         <% if admin? %>
-        <p>
-          <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |
-          <%= link_to 'Destroy', vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </p>
+          <p>
+            <%= link_to 'Edit', edit_vodcast_path(vodcast) %> |
+            <%= link_to 'Destroy', vodcast, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
         <% end %>
       </li>
+      <% end %>
     <% end %>
     </ul>
 
