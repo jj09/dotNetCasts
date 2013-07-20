@@ -17,6 +17,7 @@ class VodcastsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @vodcasts }
+      format.js  { render json: @vodcasts, callback: params[:callback] }
     end
   end
 
