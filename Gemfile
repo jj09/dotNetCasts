@@ -8,6 +8,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem 'omniauth-facebook'
+gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '3-2-stable' #https://github.com/bcardarella/client_side_validations
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

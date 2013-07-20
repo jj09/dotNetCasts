@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/bcardarella/client_side_validations.git
+  revision: 92f4e452748880e97a5a2c70d6d86972b64848d3
+  branch: 3-2-stable
+  specs:
+    client_side_validations (3.2.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -227,6 +234,7 @@ DEPENDENCIES
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 1.1.2)
   childprocess (= 0.3.6)
+  client_side_validations!
   coffee-rails (= 3.2.2)
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)

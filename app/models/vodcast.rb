@@ -7,6 +7,9 @@ class Vodcast < ActiveRecord::Base
 
   has_many :comments
 
+  validates_presence_of :title, :desc
+  validates_format_of :link, with: /[.*youtube.com\/watch\?[feature=player_detailpage&]*v=(.*)]|[.*youtube.com\/embed\/(.+)?feature=player_detailpage]/, message: "wrong link"
+
   def self.search(search)
     if search
       order("updated_at desc").find(:all, conditions: ['lower(title) LIKE lower(?)', "%#{search}%"],)
