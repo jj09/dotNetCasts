@@ -17,6 +17,10 @@ class VodcastsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @vodcasts }
+      
+      # external access(HTTP Service):
+      # http://davidsulc.com/blog/2011/04/10/implementing-a-public-api-in-rails-3/
+      # http://davidsulc.com/blog/2011/04/17/consuming-a-public-rails-api-with-jquery/
       format.js  { render json: @vodcasts, callback: params[:callback] }
     end
   end
